@@ -1,6 +1,6 @@
 /*
- * Wazuh urlRequest test component
- * Copyright (C) 2015, Wazuh Inc.
+ * Cyb3rhq urlRequest test component
+ * Copyright (C) 2015, Cyb3rhq Inc.
  * July 18, 2022.
  *
  * This program is free software; you can redistribute it
@@ -126,7 +126,7 @@ TEST_F(UrlRequestUnitTest, GetFileWithUnixSocket)
 {
     auto request {std::make_shared<RequestWrapper>()};
 
-    EXPECT_CALL(*request, setOption(optUnixSocketPath, "/tmp/wazuh-agent.sock")).Times(1);
+    EXPECT_CALL(*request, setOption(optUnixSocketPath, "/tmp/cyb3rhq-agent.sock")).Times(1);
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "GET")).Times(1);
     EXPECT_CALL(*request, setOption(optWriteData, SafeMatcherCast<void*>(_))).Times(1);
@@ -136,7 +136,7 @@ TEST_F(UrlRequestUnitTest, GetFileWithUnixSocket)
 
     GetRequest::builder(request)
         .url("http://www.wazuh.com/")
-        .unixSocketPath("/tmp/wazuh-agent.sock")
+        .unixSocketPath("/tmp/cyb3rhq-agent.sock")
         .outputFile("/tmp/hello_world.html")
         .execute();
 }
@@ -151,7 +151,7 @@ TEST_F(UrlRequestUnitTest, GetApiRequest)
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "GET")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
@@ -160,7 +160,7 @@ TEST_F(UrlRequestUnitTest, GetApiRequest)
     GetRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
         .execute();
@@ -176,7 +176,7 @@ TEST_F(UrlRequestUnitTest, PostApiRequest)
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "POST")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
@@ -185,7 +185,7 @@ TEST_F(UrlRequestUnitTest, PostApiRequest)
     PostRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
         .execute();
@@ -201,21 +201,21 @@ TEST_F(UrlRequestUnitTest, PostApiRequestWithPostFields)
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "POST")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
-    EXPECT_CALL(*request, setOption(optPostFields, R"({"name":"wazuh"})")).Times(1);
-    EXPECT_CALL(*request, setOption(optPostFieldSize, std::string(R"({"name":"wazuh"})").length())).Times(1);
+    EXPECT_CALL(*request, setOption(optPostFields, R"({"name":"cyb3rhq"})")).Times(1);
+    EXPECT_CALL(*request, setOption(optPostFieldSize, std::string(R"({"name":"cyb3rhq"})").length())).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
     EXPECT_CALL(*request, execute()).Times(1);
 
     PostRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
-        .postData(R"({"name":"wazuh"})")
+        .postData(R"({"name":"cyb3rhq"})")
         .execute();
 }
 
@@ -226,26 +226,26 @@ TEST_F(UrlRequestUnitTest, PostApiRequestWithPostFieldsAndUnixSocket)
 {
     auto request {std::make_shared<RequestWrapper>()};
 
-    EXPECT_CALL(*request, setOption(optUnixSocketPath, "/tmp/wazuh-agent.sock")).Times(1);
+    EXPECT_CALL(*request, setOption(optUnixSocketPath, "/tmp/cyb3rhq-agent.sock")).Times(1);
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "POST")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
-    EXPECT_CALL(*request, setOption(optPostFields, R"({"name":"wazuh"})")).Times(1);
-    EXPECT_CALL(*request, setOption(optPostFieldSize, std::string(R"({"name":"wazuh"})").length())).Times(1);
+    EXPECT_CALL(*request, setOption(optPostFields, R"({"name":"cyb3rhq"})")).Times(1);
+    EXPECT_CALL(*request, setOption(optPostFieldSize, std::string(R"({"name":"cyb3rhq"})").length())).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
     EXPECT_CALL(*request, execute()).Times(1);
 
     PostRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
-        .postData(R"({"name":"wazuh"})")
-        .unixSocketPath("/tmp/wazuh-agent.sock")
+        .postData(R"({"name":"cyb3rhq"})")
+        .unixSocketPath("/tmp/cyb3rhq-agent.sock")
         .execute();
 }
 
@@ -259,7 +259,7 @@ TEST_F(UrlRequestUnitTest, PutApiRequest)
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "PUT")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
@@ -268,7 +268,7 @@ TEST_F(UrlRequestUnitTest, PutApiRequest)
     PutRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
         .execute();
@@ -284,7 +284,7 @@ TEST_F(UrlRequestUnitTest, DeleteApiRequest)
     EXPECT_CALL(*request, setOption(optUrl, "http://www.wazuh.com/")).Times(1);
     EXPECT_CALL(*request, setOption(optCustomRequest, "DELETE")).Times(1);
     EXPECT_CALL(*request, appendHeader("Content-Type: Application/json")).Times(1);
-    EXPECT_CALL(*request, setOption(optUserAgent, "Wazuh-Agent/1.0")).Times(1);
+    EXPECT_CALL(*request, setOption(optUserAgent, "Cyb3rhq-Agent/1.0")).Times(1);
     EXPECT_CALL(*request, setOption(optCainfo, "cert.ca")).Times(1);
     EXPECT_CALL(*request, setOption(optTimeout, 10)).Times(1);
     EXPECT_CALL(*request, setOption(optVerifyPeer, true)).Times(1);
@@ -293,7 +293,7 @@ TEST_F(UrlRequestUnitTest, DeleteApiRequest)
     DeleteRequest::builder(request)
         .url("http://www.wazuh.com/")
         .appendHeader("Content-Type: Application/json")
-        .userAgent("Wazuh-Agent/1.0")
+        .userAgent("Cyb3rhq-Agent/1.0")
         .certificate("cert.ca")
         .timeout(10)
         .execute();
@@ -308,7 +308,7 @@ TEST_F(UrlRequestUnitTest, BadConstructorDelete)
         DeleteRequest::builder(nullptr)
             .url("http://www.wazuh.com/")
             .appendHeader("Content-Type: Application/json")
-            .userAgent("Wazuh-Agent/1.0")
+            .userAgent("Cyb3rhq-Agent/1.0")
             .certificate("cert.ca")
             .timeout(10)
             .execute();
@@ -324,7 +324,7 @@ TEST_F(UrlRequestUnitTest, BadConstructorGet)
         GetRequest::builder(nullptr)
             .url("http://www.wazuh.com/")
             .appendHeader("Content-Type: Application/json")
-            .userAgent("Wazuh-Agent/1.0")
+            .userAgent("Cyb3rhq-Agent/1.0")
             .certificate("cert.ca")
             .timeout(10)
             .execute();
@@ -340,7 +340,7 @@ TEST_F(UrlRequestUnitTest, BadConstructorPost)
         PostRequest::builder(nullptr)
             .url("http://www.wazuh.com/")
             .appendHeader("Content-Type: Application/json")
-            .userAgent("Wazuh-Agent/1.0")
+            .userAgent("Cyb3rhq-Agent/1.0")
             .certificate("cert.ca")
             .timeout(10)
             .execute();
@@ -356,7 +356,7 @@ TEST_F(UrlRequestUnitTest, BadConstructorPut)
         PutRequest::builder(nullptr)
             .url("http://www.wazuh.com/")
             .appendHeader("Content-Type: Application/json")
-            .userAgent("Wazuh-Agent/1.0")
+            .userAgent("Cyb3rhq-Agent/1.0")
             .certificate("cert.ca")
             .timeout(10)
             .execute();

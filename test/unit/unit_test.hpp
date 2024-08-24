@@ -1,6 +1,6 @@
 /*
- * Wazuh URLRequest unit tests
- * Copyright (C) 2015, Wazuh Inc.
+ * Cyb3rhq URLRequest unit tests
+ * Copyright (C) 2015, Cyb3rhq Inc.
  * July 18, 2022.
  *
  * This program is free software; you can redistribute it

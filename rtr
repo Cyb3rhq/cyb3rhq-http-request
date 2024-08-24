@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SRC_DIR=`realpath $(dirname "$0")`
-OUTPUT_DIR=`realpath $(mktemp -d -t wazuh-rtr-XXXXXX)`
-CONTAINER_NAME=wazuh-rtr
+OUTPUT_DIR=`realpath $(mktemp -d -t cyb3rhq-rtr-XXXXXX)`
+CONTAINER_NAME=cyb3rhq-rtr
 RTR_DIR=$SRC_DIR/.rtr
 RTR_BIN=rtr.py
 RTR_CONFIG=rtr_input.json
